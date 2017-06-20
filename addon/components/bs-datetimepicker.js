@@ -19,6 +19,7 @@ export default Component.extend({
   openOnFocus: false,
   isMobile: /Android|iPhone|iPod|Windows Phone/i.test(navigator.userAgent),
   showIcon: true,
+  param,
 
   iconClasses: computed('isTime', function() {
     if (this.get('isTime')) {
@@ -71,7 +72,7 @@ export default Component.extend({
       let newDate = e.date && e.date.toDate() || null;
 
       this.set('date', newDate);
-      this.sendAction('change', newDate);
+      this.sendAction('change', newDate, param);
     });
 
     this.addObserver('date', function() {
